@@ -42,7 +42,8 @@ app.post('/games', function(req, res) {
             name: req.body.name,
         },
         defaults: {
-            description: req.body.description
+            description: req.body.description,
+            numberOfPlayers: req.body.numberOfPlayers
         }
     }).then(function() {
         res.redirect('/games');
@@ -73,7 +74,8 @@ app.get('/game/:name/edit', function(req, res) {
 app.put('/game/:name', function(req, res) {
     db.game.update({
         name: req.body.name,
-        description: req.body.description
+        description: req.body.description,
+        numberOfPlayers: req.body.numberOfPlayers
     }, {
         where: {
             name: req.body.name
